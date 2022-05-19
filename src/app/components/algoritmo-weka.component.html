@@ -10,11 +10,106 @@
   <mat-divider></mat-divider>
   <hr>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
+      <div fxLayout="column" class="grid-container">
+        <mat-card fxFlex>
+          <mat-card-title fxLayout="row">
+            <h2 class="mat-h2">Formulario para los datos de pruebas</h2>
+          </mat-card-title>
 
-    </div>
-    <div class="col-md-6">
+          <form [formGroup]="formDataset" (ngSubmit)="addObjectDataset()">
+            <mat-card-content>
+              <div fxLayout="row" fxLayoutGap="70px" fxLayout.xs="column" fxLayoutGap.xs="5px">
+                <mat-form-field style="margin-right: 15px;" fxFlex.xs appearance="fill">
+                  <mat-label>Clima</mat-label>
+                  <mat-select formControlName="clima">
+                    <mat-option>None</mat-option>
+                    <mat-option value="sunny">Soleado</mat-option>
+                    <mat-option value="overcast">Nublado</mat-option>
+                    <mat-option value="rainy">Lluvioso</mat-option>
+                  </mat-select>
+                </mat-form-field>
 
+                <mat-form-field style="margin-right: 15px;" fxFlex.xs appearance="fill">
+                  <mat-label>Nivel</mat-label>
+                  <mat-select formControlName="nivel">
+                    <mat-option>None</mat-option>
+                    <mat-option value="high">Alto</mat-option>
+                    <mat-option value="normal">Normal</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field style="margin-right: 15px;" fxFlex.xs appearance="fill">
+                  <mat-label>Llovera</mat-label>
+                  <mat-select formControlName="llovera">
+                    <mat-option>None</mat-option>
+                    <mat-option value="TRUE">Si</mat-option>
+                    <mat-option value="FALSE">No</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="5px">
+                  <button mat-fab mat-raised-button color="primary" type="submit" matTooltip="Add"
+                    [disabled]="formDataset.invalid">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </mat-card-content>
+          </form>
+        </mat-card>
+        <mat-card fxFlex>
+          <mat-card-content class="smaller-card-content" fxLayout="column" fxLayout.lg="column" fxLayout.xl="column">
+            <div fxFlex.lg fxFlex>
+              <div fxLayout="row" fxLayout.xl="row">
+                <div class="demo-button-container">
+                  <button mat-raised-button (click)="generarAlgoritmo()" class="demo-button">
+                    Generar algoritmo
+                  </button>
+                </div>
+
+                <table mat-table [dataSource]="datasetService.listDataSetObject" recycleRows fxFlex fxFlex.lg fxFlex.xl
+                  class="mat-elevation-z8 demo-table">
+                  <ng-container matColumnDef="clima">
+                    <th mat-header-cell *matHeaderCellDef> Clima </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{element.clima}}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="nivel">
+                    <th mat-header-cell *matHeaderCellDef> Nivel </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{element.nivel}}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="llovera">
+                    <th mat-header-cell *matHeaderCellDef> Llovera </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{element.llovera}}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element">
+                      <button mat-icon-button color="primary" type="button" (click)="deleteElement(element)">
+                        <mat-icon matTooltip="Delete" matTooltipPosition="below">
+                          delete_forever
+                        </mat-icon>
+                      </button>
+                    </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
   </div>
 </div>

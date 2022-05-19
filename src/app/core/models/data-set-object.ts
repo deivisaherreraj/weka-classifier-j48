@@ -1,4 +1,6 @@
 export class DataSetObject {
-  value?: string;
-  name?: string;
+  id?: string;
+  clima?: string;
+  nivel?: string;
+  llovera?: string;
 }

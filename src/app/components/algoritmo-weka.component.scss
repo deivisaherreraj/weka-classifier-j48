@@ -2,3 +2,36 @@
   background-image: url('../../assets/image/fonto-algoritmo.jpg');
   background-size: cover;
 }
+
+.demo-button-container {
+  padding-bottom: 16px;
+}
+
+.demo-button + .demo-button {
+  margin-left: 8px;
+}
+
+.demo-table {
+  width: 100%;
+}
+
+.mat-column-clima {      
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-nivel {        
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-llovera {        
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-actions {      
+  border-right: 1px solid currentColor;  
+  padding-right: 24px;
+  text-align: center;
+}
