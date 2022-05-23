@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataSetObject } from '../core/models/data-set-object';
 import { ObjectDatasetService } from '../core/services/object-dataset.service';
 
@@ -11,10 +11,11 @@ import { ObjectDatasetService } from '../core/services/object-dataset.service';
 export class AlgoritmoWekaComponent implements OnInit {
   formDataset: FormGroup;
   displayedColumns: string[] = [
-    'clima',
-    'nivel',
-    'llovera',
-    'actions'
+    'outlook',
+    'temperature',
+    'humidity',
+    'windy',
+    'play',
   ];
 
   constructor(
@@ -22,22 +23,25 @@ export class AlgoritmoWekaComponent implements OnInit {
     public datasetService: ObjectDatasetService
   ) {
     this.formDataset = this.formBuilder.group({
-      clima: ['', [Validators.required]],
-      nivel: ['', [Validators.required]],
-      llovera: ['', [Validators.required]]
+      outlook: ['', [Validators.required]],
+      temperature: ['', [Validators.required]],
+      humidity: ['', [Validators.required]],
+      windy: ['', [Validators.required]]
     });
   }
 
   ngOnInit(): void {
+    this.datasetService.clearLocalStorage();
     this.datasetService.listDataset();
   }
 
   addObjectDataset() {
     const data: DataSetObject = {
       id: this.datasetService.getNewGuid(),
-      clima: this.formDataset.get('clima')?.value,
-      nivel: this.formDataset.get('nivel')?.value,
-      llovera: this.formDataset.get('llovera')?.value
+      outlook: this.formDataset.get('outlook')?.value,
+      temperature: this.formDataset.get('temperature')?.value,
+      humidity: this.formDataset.get('humidity')?.value,
+      windy: this.formDataset.get('windy')?.value
     }
 
     this.datasetService.saveDataset(data);
@@ -46,7 +50,7 @@ export class AlgoritmoWekaComponent implements OnInit {
   }
 
   deleteElement(element: any) {
-    if (confirm("¿Esta seguro de eliminar el registro?")) {
+    if (confirm("Are you sure you want to delete the record?")) {
       this.datasetService.deleteDataset(element);
       this.datasetService.listDataset();
     }

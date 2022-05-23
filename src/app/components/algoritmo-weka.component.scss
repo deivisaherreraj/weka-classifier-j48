@@ -1,3 +1,11 @@
+mat-card, table {
+  background: #42424280;
+}
+
+:host ::ng-deep .mat-form-field-flex {
+  background: #424242d1;
+}
+
 .header-image {
   background-image: url('../../assets/image/fonto-algoritmo.jpg');
   background-size: cover;
@@ -9,6 +17,41 @@
 
 .demo-button + .demo-button {
   margin-left: 8px;
+}
+
+.example-container {
+  position: relative;
+}
+
+mat-card.mat-card.mat-focus-indicator.mat-card-result {
+  top: -4px;
+}
+
+.example-table-container {
+  position: relative;
+  max-height: 200px;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #131111; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #A8A8A8; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #878686;
 }
 
 .demo-table {

@@ -5,15 +5,13 @@ import { Injectable } from '@angular/core';
 })
 export class WekaClassifierService {
 
-  constructor() { }
-
-  public static classify(i: Object[]): number {
+  public classify(i: Object[]): number {
     let p: number = NaN;
     p = this.N7c3ff84719(i);
     return p;
   }
 
-  static N7c3ff84719(i: Object[]): number {
+  private N7c3ff84719(i: Object[]): number {
     let p: number = NaN;
     if ((i[0] == null)) {
       p = 1;
@@ -27,7 +25,7 @@ export class WekaClassifierService {
     return p;
   }
 
-  static N412cf37220(i: Object[]): number {
+  private N412cf37220(i: Object[]): number {
     let p: number = NaN;
     if ((i[2] == null)) {
       p = 1;
@@ -39,7 +37,7 @@ export class WekaClassifierService {
     return p;
   }
 
-  static N4231fac21(i: Object[]): number {
+  private N4231fac21(i: Object[]): number {
     let p: number = NaN;    
     if ((i[3] == null)) {
       p = 1;

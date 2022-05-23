@@ -1,6 +1,8 @@
 export class DataSetObject {
   id?: string;
-  clima?: string;
-  nivel?: string;
-  llovera?: string;
+  outlook?: string;
+  temperature?: string;
+  humidity?: string;
+  windy?: string;
+  play?: string;
 }
